@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>珀莱雅 深海焕能紧致面霜 | PROYA</title>
+<meta name="description" content="珀莱雅深海焕能紧致面霜，深海修护成分，抗老紧致，保湿提亮，适合多种肤质。">
+
+<!-- Font Awesome 图标库 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<!-- Google Fonts: Cormorant Garamond 优雅衬线体（英文装饰） -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   珀莱雅 深海焕能紧致面霜 — 推广单页样式
+   设计主色：深海蓝 #0a3d62 / #1a5a8a · 珍珠白 #fafcfe · 金色 #c9a96e
+   ============================================================ */
+
+/* ---------- 设计令牌 ---------- */
+:root{
+  --deep:#0a3d62;          /* 深海蓝 */
+  --deep-2:#1a5a8a;        /* 中海蓝 */
+  --deep-3:#2c7fb8;        /* 亮海蓝 */
+  --pearl:#fafcfe;         /* 珍珠白 */
+  --pearl-2:#f0f4f8;       /* 浅灰白 */
+  --gold:#c9a96e;          /* 金色 */
+  --gold-2:#b8945a;        /* 深金 */
+  --ink:#1a2b3c;           /* 主文字 */
+  --ink-2:#4a5d70;         /* 次文字 */
+  --line:rgba(10,61,98,.12);
+  --shadow:0 10px 40px rgba(10,61,98,.08);
+  --shadow-lg:0 20px 60px rgba(10,61,98,.14);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Noto Sans SC','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  --maxw:1200px;
+}
+
+/* ---------- 重置 ---------- */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--pearl);
+  line-height:1.7;
+  overflow-x:hidden;
+  font-weight:300;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+/* 通用容器 */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.serif{font-family:var(--serif)}
+
+/* ---------- 通用淡入动画（IntersectionObserver 触发） ---------- */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.reveal.show{opacity:1;transform:none}
+.reveal.d1{transition-delay:.12s}
+.reveal.d2{transition-delay:.24s}
+.reveal.d3{transition-delay:.36s}
+.reveal.d4{transition-delay:.48s}
+
+/* ============================================================
+   1. 顶部导航
+   ============================================================ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  transition:background .4s,box-shadow .4s,padding .4s;
+  padding:22px 0;
+}
+.nav.scrolled{background:rgba(250,252,254,.92);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);padding:14px 0}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.nav .brand{display:flex;align-items:baseline;gap:10px;color:#fff;transition:color .4s}
+.nav.scrolled .brand{color:var(--deep)}
+.nav .brand .cn{font-size:22px;font-weight:500;letter-spacing:2px}
+.nav .brand .en{font-family:var(--serif);font-size:15px;letter-spacing:3px;opacity:.8}
+.nav .links{display:flex;gap:36px;align-items:center}
+.nav .links a{color:rgba(255,255,255,.9);font-size:14px;letter-spacing:1px;transition:color .3s;position:relative}
+.nav.scrolled .links a{color:var(--ink-2)}
+.nav .links a:hover{color:var(--gold)}
+.nav .links a::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--gold);transition:width .3s}
+.nav .links a:hover::after{width:100%}
+.nav-burger{display:none;font-size:22px;color:#fff}
+.nav.scrolled .nav-burger{color:var(--deep)}
+
+/* ============================================================
+   2. Hero 首屏
+   ============================================================ */
+.hero{
+  position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#0a3d62 0%,#1a5a8a 45%,#2c7fb8 100%);
+  overflow:hidden;text-align:center;color:#fff;
+}
+/* Hero 背景图（Unsplash 海洋）+ 渐变蒙层 */
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1559825481-12a05cc00344?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+  opacity:.45;
+}
+.hero::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 40%,transparent 0%,rgba(10,61,98,.5) 100%);
+}
+.hero-inner{position:relative;z-index:2;padding:0 24px;max-width:900px}
+.hero .eyebrow{
+  font-family:var(--serif);font-size:clamp(15px,2.4vw,20px);letter-spacing:6px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:24px;opacity:0;animation:fadeUp 1s .3s forwards;
+}
+.hero h1{
+  font-size:clamp(38px,7vw,76px);font-weight:300;line-height:1.2;letter-spacing:4px;margin-bottom:10px;
+  opacity:0;animation:fadeUp 1s .5s forwards;
+}
+.hero h1 .em{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--gold)}
+.hero .slogan{
+  font-size:clamp(16px,2.4vw,21px);font-weight:300;letter-spacing:3px;opacity:.9;margin-bottom:44px;
+  opacity:0;animation:fadeUp 1s .7s forwards;
+}
+.hero .cta-group{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp 1s .9s forwards}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:16px 40px;font-size:15px;letter-spacing:2px;border-radius:50px;
+  transition:all .35s cubic-bezier(.2,.7,.2,1);position:relative;overflow:hidden;
+}
+.btn-primary{background:var(--gold);color:#fff;box-shadow:0 8px 28px rgba(201,169,110,.45)}
+.btn-primary:hover{background:var(--gold-2);transform:translateY(-3px);box-shadow:0 14px 36px rgba(201,169,110,.55)}
+.btn-ghost{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.4);backdrop-filter:blur(6px)}
+.btn-ghost:hover{background:rgba(255,255,255,.2);transform:translateY(-3px)}
+.hero .scroll-hint{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.7);font-size:13px;letter-spacing:2px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.hero .scroll-hint .line{width:1px;height:40px;background:rgba(255,255,255,.5);animation:scrollLine 2s ease-in-out infinite}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}from{opacity:0;transform:translateY(30px)}}
+@keyframes scrollLine{0%,100%{transform:scaleY(.4);opacity:.5}50%{transform:scaleY(1);opacity:1}}
+
+/* ============================================================
+   3. 核心卖点区
+   ============================================================ */
+.section{padding:110px 0}
+.section-head{text-align:center;margin-bottom:70px}
+.section-head .kicker{font-family:var(--serif);font-size:16px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.section-head h2{font-size:clamp(28px,4vw,40px);font-weight:300;letter-spacing:3px;color:var(--deep)}
+.section-head h2 .em{font-family:var(--serif);font-style:italic;color:var(--gold-2)}
+.section-head .desc{margin-top:18px;color:var(--ink-2);font-size:15px;max-width:560px;margin-left:auto;margin-right:auto}
+
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.feature-card{
+  background:#fff;border-radius:20px;padding:46px 28px;text-align:center;
+  box-shadow:var(--shadow);border:1px solid var(--line);
+  transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s;
+}
+.feature-card:hover{transform:translateY(-10px);box-shadow:var(--shadow-lg)}
+.feature-card .icon{
+  width:74px;height:74px;margin:0 auto 26px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:30px;
+  background:linear-gradient(135deg,var(--deep),var(--deep-2));color:#fff;
+  box-shadow:0 8px 22px rgba(10,61,98,.22);
+}
+.feature-card h3{font-size:20px;font-weight:500;color:var(--deep);margin-bottom:12px;letter-spacing:1px}
+.feature-card p{font-size:14px;color:var(--ink-2);line-height:1.8}
+
+/* ============================================================
+   4. 成分科技区（图文左右）
+   ============================================================ */
+.tech{background:linear-gradient(180deg,var(--pearl-2),var(--pearl))}
+.tech-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.tech-img{position:relative;border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:4/5}
+.tech-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s}
+.tech-img:hover img{transform:scale(1.05)}
+.tech-img .badge{
+  position:absolute;top:24px;left:24px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+  border-radius:50px;padding:10px 20px;font-size:13px;letter-spacing:1px;color:var(--deep);font-weight:500
+}
+.tech-content .kicker{font-family:var(--serif);font-size:15px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.tech-content h2{font-size:clamp(26px,3.6vw,38px);font-weight:300;color:var(--deep);line-height:1.4;margin-bottom:24px;letter-spacing:2px}
+.tech-content h2 .em{font-family:var(--serif);font-style:italic;color:var(--gold-2)}
+.tech-content .lead{font-size:16px;color:var(--ink-2);line-height:1.9;margin-bottom:30px}
+.tech-list{list-style:none;display:flex;flex-direction:column;gap:18px;margin-bottom:34px}
+.tech-list li{display:flex;gap:16px;align-items:flex-start}
+.tech-list li .dot{flex:none;width:36px;height:36px;border-radius:10px;background:rgba(10,61,98,.08);color:var(--deep);display:flex;align-items:center;justify-content:center;font-size:15px}
+.tech-list li .t strong{display:block;font-size:15px;color:var(--deep);font-weight:500;margin-bottom:4px}
+.tech-list li .t span{font-size:14px;color:var(--ink-2);line-height:1.7}
+.tech-content .btn-link{display:inline-flex;align-items:center;gap:10px;color:var(--gold-2);font-size:14px;letter-spacing:1px;border-bottom:1px solid var(--gold-2);padding-bottom:4px;transition:gap .3s}
+.tech-content .btn-link:hover{gap:16px}
+
+/* ============================================================
+   5. 使用效果区
+   ============================================================ */
+.effect-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.effect-visual{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.effect-visual .pic{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:3/4;box-shadow:var(--shadow)}
+.effect-visual .pic img{width:100%;height:100%;object-fit:cover}
+.effect-visual .pic .tag{position:absolute;bottom:14px;left:14px;background:rgba(255,255,255,.92);padding:6px 14px;border-radius:50px;font-size:12px;letter-spacing:1px;color:var(--deep);font-weight:500}
+.effect-stats .stat{margin-bottom:34px}
+.effect-stats .stat:last-child{margin-bottom:0}
+.effect-stats .stat .label{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.effect-stats .stat .label .name{font-size:14px;color:var(--ink-2);letter-spacing:1px}
+.effect-stats .stat .label .num{font-family:var(--serif);font-size:30px;font-weight:600;color:var(--deep)}
+.effect-stats .stat .label .num .pct{font-size:16px;color:var(--gold-2);margin-left:2px}
+.bar{height:8px;background:var(--pearl-2);border-radius:50px;overflow:hidden}
+.bar .fill{height:100%;border-radius:50px;background:linear-gradient(90deg,var(--deep),var(--deep-3));width:0;transition:width 1.4s cubic-bezier(.2,.7,.2,1)}
+.effect-note{margin-top:20px;font-size:12px;color:var(--ink-2);opacity:.7;letter-spacing:.5px}
+
+/* ============================================================
+   6. 用户评价区
+   ============================================================ */
+.reviews{background:var(--deep);color:#fff;position:relative;overflow:hidden}
+.reviews::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?auto=format&fit=crop&w=1920&q=80') center/cover;opacity:.08}
+.reviews .section-head h2{color:#fff}
+.reviews .section-head .desc{color:rgba(255,255,255,.7)}
+.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;position:relative;z-index:1}
+.review-card{background:rgba(255,255,255,.07);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:34px 28px;transition:background .4s,transform .4s}
+.review-card:hover{background:rgba(255,255,255,.12);transform:translateY(-6px)}
+.review-card .stars{color:var(--gold);font-size:14px;margin-bottom:16px;letter-spacing:2px}
+.review-card .text{font-size:14.5px;line-height:1.85;color:rgba(255,255,255,.9);margin-bottom:22px;min-height:120px}
+.review-card .user{display:flex;align-items:center;gap:14px;border-top:1px solid rgba(255,255,255,.12);padding-top:18px}
+.review-card .user .avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-2));display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;flex:none}
+.review-card .user .info .nick{font-size:14px;font-weight:500}
+.review-card .user .info .tag{font-size:12px;color:rgba(255,255,255,.6);margin-top:2px}
+
+/* ============================================================
+   7. 产品规格与购买区
+   ============================================================ */
+.buy{background:linear-gradient(180deg,var(--pearl),var(--pearl-2))}
+.buy-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.buy-img{position:relative;border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:1/1}
+.buy-img img{width:100%;height:100%;object-fit:cover}
+.buy-img .float-tag{position:absolute;bottom:24px;right:24px;background:var(--gold);color:#fff;border-radius:14px;padding:14px 20px;text-align:center;box-shadow:0 8px 24px rgba(201,169,110,.4)}
+.buy-img .float-tag .t1{font-size:12px;letter-spacing:1px;opacity:.9}
+.buy-img .float-tag .t2{font-family:var(--serif);font-size:26px;font-weight:600;margin-top:2px}
+.buy-info .kicker{font-family:var(--serif);font-size:15px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.buy-info h2{font-size:clamp(26px,3.6vw,38px);font-weight:300;color:var(--deep);line-height:1.3;margin-bottom:16px;letter-spacing:2px}
+.buy-info .sub{color:var(--ink-2);font-size:15px;margin-bottom:26px;line-height:1.8}
+.price-row{display:flex;align-items:baseline;gap:14px;margin-bottom:28px}
+.price-row .now{font-family:var(--serif);font-size:44px;font-weight:600;color:var(--deep)}
+.price-row .now .yen{font-size:24px;vertical-align:top;margin-right:2px}
+.price-row .old{font-size:17px;color:var(--ink-2);text-decoration:line-through;opacity:.6}
+.price-row .off{background:rgba(201,169,110,.15);color:var(--gold-2);font-size:12px;padding:4px 10px;border-radius:50px;letter-spacing:1px}
+.spec-label{font-size:13px;color:var(--ink-2);letter-spacing:1px;margin-bottom:12px}
+.specs{display:flex;gap:14px;margin-bottom:30px;flex-wrap:wrap}
+.spec{padding:14px 24px;border:1.5px solid var(--line);border-radius:14px;font-size:14px;color:var(--ink);transition:all .3s;cursor:pointer;text-align:center}
+.spec .s1{font-weight:500;color:var(--deep)}
+.spec .s2{font-size:12px;color:var(--ink-2);margin-top:3px}
+.spec:hover{border-color:var(--deep-3)}
+.spec.active{border-color:var(--gold);background:rgba(201,169,110,.06);box-shadow:0 4px 14px rgba(201,169,110,.18)}
+.gifts{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 24px;margin-bottom:30px;box-shadow:var(--shadow)}
+.gifts .g-title{font-size:13px;color:var(--gold-2);letter-spacing:1px;margin-bottom:12px;font-weight:500}
+.gifts li{list-style:none;font-size:14px;color:var(--ink-2);display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.gifts li:last-child{margin-bottom:0}
+.gifts li i{color:var(--gold)}
+.buy-actions{display:flex;gap:14px;flex-wrap:wrap}
+.buy-actions .btn-primary{background:var(--deep)}
+.buy-actions .btn-primary:hover{background:var(--deep-2)}
+.btn-cart{background:#fff;color:var(--deep);border:1.5px solid var(--deep);box-shadow:0 6px 20px rgba(10,61,98,.08)}
+.btn-cart:hover{background:var(--pearl-2);transform:translateY(-3px)}
+
+/* ============================================================
+   8. 品牌信任区
+   ============================================================ */
+.trust{background:var(--pearl)}
+.trust-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:center}
+.trust-intro h2{font-size:clamp(26px,3.6vw,38px);font-weight:300;color:var(--deep);margin-bottom:22px;letter-spacing:2px;line-height:1.4}
+.trust-intro h2 .em{font-family:var(--serif);font-style:italic;color:var(--gold-2)}
+.trust-intro p{color:var(--ink-2);font-size:15px;line-height:1.9;margin-bottom:16px}
+.trust-certs{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.cert{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 22px;display:flex;gap:16px;align-items:center;box-shadow:var(--shadow);transition:transform .35s}
+.cert:hover{transform:translateY(-5px)}
+.cert .ic{flex:none;width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--deep),var(--deep-2));color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px}
+.cert .tx .t{font-size:15px;font-weight:500;color:var(--deep);margin-bottom:3px}
+.cert .tx .d{font-size:12.5px;color:var(--ink-2);line-height:1.6}
+
+/* ============================================================
+   9. 页脚
+   ============================================================ */
+.footer{background:#072b46;color:rgba(255,255,255,.75);padding:70px 0 30px}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.12)}
+.footer .brand{display:flex;align-items:baseline;gap:10px;margin-bottom:18px;color:#fff}
+.footer .brand .cn{font-size:24px;font-weight:500;letter-spacing:2px}
+.footer .brand .en{font-family:var(--serif);font-size:15px;letter-spacing:3px;opacity:.8}
+.footer .about{font-size:13.5px;line-height:1.8;max-width:300px}
+.footer h4{color:#fff;font-size:15px;font-weight:500;margin-bottom:18px;letter-spacing:1px}
+.footer ul{list-style:none}
+.footer ul li{margin-bottom:11px}
+.footer ul li a{font-size:13.5px;transition:color .3s}
+.footer ul li a:hover{color:var(--gold)}
+.footer .socials{display:flex;gap:14px;margin-top:6px}
+.footer .socials a{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:15px;transition:all .3s}
+.footer .socials a:hover{background:var(--gold);transform:translateY(-3px)}
+.footer-bottom{padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:12.5px;color:rgba(255,255,255,.5)}
+.footer-bottom a:hover{color:var(--gold)}
+
+/* ============================================================
+   响应式
+   ============================================================ */
+@media(max-width:980px){
+  .features{grid-template-columns:repeat(2,1fr)}
+  .tech-grid,.effect-grid,.buy-grid,.trust-grid{grid-template-columns:1fr;gap:44px}
+  .review-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr;gap:32px}
+  .nav .links{display:none}
+  .nav-burger{display:block}
+}
+@media(max-width:560px){
+  .section{padding:72px 0}
+  .features{grid-template-columns:1fr}
+  .effect-visual{grid-template-columns:1fr 1fr;gap:10px}
+  .footer-top{grid-template-columns:1fr}
+  .price-row .now{font-size:36px}
+  .hero .cta-group .btn{padding:14px 30px;font-size:14px}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     顶部导航
+     ============================================================ -->
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a href="#hero" class="brand">
+      <span class="cn">珀莱雅</span>
+      <span class="en">PROYA</span>
+    </a>
+    <div class="links">
+      <a href="#features">核心卖点</a>
+      <a href="#tech">成分科技</a>
+      <a href="#effect">使用效果</a>
+      <a href="#reviews">用户评价</a>
+      <a href="#buy">立即购买</a>
+    </div>
+    <i class="fa-solid fa-bars nav-burger" aria-hidden="true"></i>
+  </div>
+</nav>
+
+<!-- ============================================================
+     1. Hero 首屏
+     ============================================================ -->
+<header class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Deep Sea · Marine Repair</div>
+    <h1>深海焕能 <span class="em">紧致</span>面霜</h1>
+    <p class="slogan">源自深海的修护力量，唤醒肌肤年轻光采</p>
+    <div class="cta-group">
+      <a href="#buy" class="btn btn-primary"><i class="fa-solid fa-bag-shopping"></i> 立即购买</a>
+      <a href="#tech" class="btn btn-ghost">探索科技 <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>SCROLL</span>
+    <span class="line"></span>
+  </div>
+</header>
+
+<!-- ============================================================
+     2. 核心卖点区
+     ============================================================ -->
+<section class="section" id="features">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">Core Advantages</div>
+      <h2>四大<span class="em">核心</span>卖点</h2>
+      <p class="desc">从深海到肌肤，层层递进的修护与焕能，为年轻肌底注入源源活力</p>
+    </div>
+    <div class="features">
+      <!-- 卖点 1：成分 -->
+      <div class="feature-card reveal d1">
+        <div class="icon"><i class="fa-solid fa-droplet"></i></div>
+        <h3>深海修护成分</h3>
+        <p>萃取深海藻类与海洋矿物质，富含氨基酸与微量元素，深层修护肌肤屏障</p>
+      </div>
+      <!-- 卖点 2：功效 -->
+      <div class="feature-card reveal d2">
+        <div class="icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <h3>抗老紧致提亮</h3>
+        <p>多肽复合物协同烟酰胺，淡化细纹、紧致轮廓，令肤色匀净透亮</p>
+      </div>
+      <!-- 卖点 3：科技 -->
+      <div class="feature-card reveal d3">
+        <div class="icon"><i class="fa-solid fa-flask"></i></div>
+        <h3>专研渗透科技</h3>
+        <p>脂质体包裹缓释技术，有效成分直达肌底，吸收率提升至寻常的 3 倍</p>
+      </div>
+      <!-- 卖点 4：肤感 -->
+      <div class="feature-card reveal d4">
+        <div class="icon"><i class="fa-solid fa-feather"></i></div>
+        <h3>轻盈丝绒肤感</h3>
+        <p>冰淇淋般一抹化水，不油腻不搓泥，干性、油性、敏感肌均可安心使用</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     3. 成分科技区
+     ============================================================ -->
+<section class="section tech" id="tech">
+  <div class="wrap">
+    <div class="tech-grid">
+      <!-- 左图 -->
+      <div class="tech-img reveal">
+        <span class="badge"><i class="fa-solid fa-award"></i> 专研配方</span>
+        <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=900&q=80" alt="深海成分科研">
+      </div>
+      <!-- 右文 -->
+      <div class="tech-content reveal d1">
+        <div class="kicker">Science & Ingredient</div>
+        <h2>深海 <span class="em">巨藻</span> 精萃<br>十年专研修护力</h2>
+        <p class="lead">珀莱雅联合法国海洋生物实验室，从北大西洋深海巨藻中提取高纯度活性肽，搭配海洋深层水与烟酰胺，构建「修护—抗老—提亮」三重功效矩阵，从源头激活肌肤年轻机制。</p>
+        <ul class="tech-list">
+          <li>
+            <span class="dot"><i class="fa-solid fa-seedling"></i></span>
+            <div class="t"><strong>深海巨藻活性肽</strong><span>促进胶原合成，提升肌肤弹力与紧致度</span></div>
+          </li>
+          <li>
+            <span class="dot"><i class="fa-solid fa-water"></i></span>
+            <div class="t"><strong>海洋深层矿物水</strong><span>富含 72 种微量元素，持久锁水保湿 48 小时</span></div>
+          </li>
+          <li>
+            <span class="dot"><i class="fa-solid fa-sun"></i></span>
+            <div class="t"><strong>5% 烟酰胺 + 多肽</strong><span>匀净提亮肤色，淡化细纹与暗沉</span></div>
+          </li>
+        </ul>
+        <a href="#buy" class="btn-link">了解更多成分故事 <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     4. 使用效果区
+     ============================================================ -->
+<section class="section" id="effect">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">Visible Results</div>
+      <h2>4 周 <span class="em">见证</span> 肌肤改变</h2>
+      <p class="desc">基于 120 位 25–40 岁女性连续使用 4 周的自我评估数据</p>
+    </div>
+    <div class="effect-grid">
+      <!-- 使用前后对比图 -->
+      <div class="effect-visual reveal">
+        <div class="pic">
+          <img src="https://images.unsplash.com/photo-1614779260822-84c5b5c3d3e1?auto=format&fit=crop&w=600&q=80" alt="使用前">
+          <span class="tag">使用前</span>
+        </div>
+        <div class="pic">
+          <img src="https://images.unsplash.com/photo-1614779260822-84c5b5c3d3e1?auto=format&fit=crop&w=600&q=80&sat=40" alt="使用后">
+          <span class="tag">使用 4 周后</span>
+        </div>
+      </div>
+      <!-- 肤质数据可视化 -->
+      <div class="effect-stats reveal d1">
+        <div class="stat">
+          <div class="label"><span class="name">肌肤紧致度提升</span><span class="num">91<span class="pct">%</span></span></div>
+          <div class="bar"><div class="fill" data-w="91"></div></div>
+        </div>
+        <div class="stat">
+          <div class="label"><span class="name">细纹淡化改善</span><span class="num">87<span class="pct">%</span></span></div>
+          <div class="bar"><div class="fill" data-w="87"></div></div>
+        </div>
+        <div class="stat">
+          <div class="label"><span class="name">肌肤水润度提升</span><span class="num">95<span class="pct">%</span></span></div>
+          <div class="bar"><div class="fill" data-w="95"></div></div>
+        </div>
+        <div class="stat">
+          <div class="label"><span class="name">肤色匀净透亮</span><span class="num">84<span class="pct">%</span></span></div>
+          <div class="bar"><div class="fill" data-w="84"></div></div>
+        </div>
+        <p class="effect-note">* 数据来源于珀莱雅内部实验室，个体效果因人而异，仅供参考。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     5. 用户评价区
+     ============================================================ -->
+<section class="section reviews" id="reviews">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">Customer Reviews</div>
+      <h2>真实用户 <span class="em">口碑</span></h2>
+      <p class="desc">超过 10,000+ 用户好评，听听她们的真实使用感受</p>
+    </div>
+    <div class="review-grid">
+      <!-- 评价 1 -->
+      <div class="review-card reveal d1">
+        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p class="text">"用了大概三周，最大的感受是皮肤变弹润了，法令纹那边没那么干卡。质地很舒服，不油腻，白天化妆前用也不搓泥，会回购。"</p>
+        <div class="user">
+          <div class="avatar"><i class="fa-solid fa-user"></i></div>
+          <div class="info"><div class="nick">林**婷</div><div class="tag">干性肌肤 · 32 岁</div></div>
+        </div>
+      </div>
+      <!-- 评价 2 -->
+      <div class="review-card reveal d2">
+        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p class="text">"回购第三瓶了！深海系列的修护力真的很可，换季敏感期用着很安心，泛红明显减少。淡淡的海洋味闻着很治愈，性价比很高。"</p>
+        <div class="user">
+          <div class="avatar"><i class="fa-solid fa-user"></i></div>
+          <div class="info"><div class="nick">小**鹿</div><div class="tag">敏感肌肤 · 28 岁</div></div>
+        </div>
+      </div>
+      <!-- 评价 3 -->
+      <div class="review-card reveal d3">
+        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+        <p class="text">"作为油皮一开始担心面霜会闷，但这款肤感意外清爽，上脸化水吸收快。用了一个月感觉肤色匀净了不少，毛孔也细腻了，推荐。"</p>
+        <div class="user">
+          <div class="avatar"><i class="fa-solid fa-user"></i></div>
+          <div class="info"><div class="nick">C**ris</div><div class="tag">油性肌肤 · 35 岁</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     6. 产品规格与购买区
+     ============================================================ -->
+<section class="section buy" id="buy">
+  <div class="wrap">
+    <div class="buy-grid">
+      <!-- 产品图 -->
+      <div class="buy-img reveal">
+        <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=900&q=80" alt="珀莱雅深海焕能紧致面霜">
+        <div class="float-tag">
+          <div class="t1">新品上市</div>
+          <div class="t2">8 折</div>
+        </div>
+      </div>
+      <!-- 购买信息 -->
+      <div class="buy-info reveal d1">
+        <div class="kicker">Shop Now</div>
+        <h2>深海焕能紧致面霜</h2>
+        <p class="sub">深海巨藻精萃 × 多肽复合，一瓶修护抗老，焕启年轻紧致光采</p>
+
+        <!-- 价格 -->
+        <div class="price-row">
+          <span class="now"><span class="yen">¥</span>298</span>
+          <span class="old">¥368</span>
+          <span class="off">新品限时 8 折</span>
+        </div>
+
+        <!-- 规格选择 -->
+        <div class="spec-label">选择规格</div>
+        <div class="specs">
+          <div class="spec active" data-price="298">
+            <div class="s1">50g</div>
+            <div class="s2">正装 · 推荐</div>
+          </div>
+          <div class="spec" data-price="178">
+            <div class="s1">30g</div>
+            <div class="s2">体验装</div>
+          </div>
+          <div class="spec" data-price="498">
+            <div class="s1">50g × 2</div>
+            <div class="s2">囤货装</div>
+          </div>
+        </div>
+
+        <!-- 赠品信息 -->
+        <div class="gifts">
+          <div class="g-title"><i class="fa-solid fa-gift"></i> 新品限时赠礼</div>
+          <ul>
+            <li><i class="fa-solid fa-check"></i> 赠 同系列精华小样 7ml × 2</li>
+            <li><i class="fa-solid fa-check"></i> 赠 海洋保湿面膜 5 片</li>
+            <li><i class="fa-solid fa-check"></i> 满 299 元包邮，30 天无理由退换</li>
+          </ul>
+        </div>
+
+        <!-- 购买按钮 -->
+        <div class="buy-actions">
+          <button class="btn btn-primary" id="buyNow"><i class="fa-solid fa-bag-shopping"></i> 立即购买</button>
+          <button class="btn btn-cart" id="addCart"><i class="fa-solid fa-cart-plus"></i> 加入购物车</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     7. 品牌信任区
+     ============================================================ -->
+<section class="section trust" id="trust">
+  <div class="wrap">
+    <div class="trust-grid">
+      <div class="trust-intro reveal">
+        <h2>珀莱雅 <span class="em">PROYA</span><br>源自深海的护肤哲学</h2>
+        <p>珀莱雅创立于 2003 年，始终秉持「深海·纯净·科技」的品牌理念，致力于将海洋的天然修护力量与现代护肤科技相结合，为亚洲女性提供安全、高效、高品质的护肤产品。</p>
+        <p>所有产品均经过严苛质检，不含酒精、荧光剂与刺激性防腐剂，并通过多项国际权威认证，让你每一瓶都用得安心。</p>
+      </div>
+      <div class="trust-certs reveal d1">
+        <div class="cert">
+          <div class="ic"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="tx"><div class="t">SGS 质检认证</div><div class="d">第三方权威检测，安全放心</div></div>
+        </div>
+        <div class="cert">
+          <div class="ic"><i class="fa-solid fa-leaf"></i></div>
+          <div class="tx"><div class="t">无添加配方</div><div class="d">不含酒精 / 荧光剂 / 激素</div></div>
+        </div>
+        <div class="cert">
+          <div class="ic"><i class="fa-solid fa-rotate-left"></i></div>
+          <div class="tx"><div class="t">30 天无忧退换</div><div class="d">不满意可申请退换货</div></div>
+        </div>
+        <div class="cert">
+          <div class="ic"><i class="fa-solid fa-truck-fast"></i></div>
+          <div class="tx"><div class="t">顺丰极速达</div><div class="d">满 299 元全国包邮</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     8. 页脚
+     ============================================================ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="brand"><span class="cn">珀莱雅</span><span class="en">PROYA</span></div>
+        <p class="about">源自深海的护肤哲学，以海洋之力唤醒肌肤年轻光采。珀莱雅，让科学护肤更纯净。</p>
+        <div class="socials">
+          <a href="#" aria-label="微博"><i class="fa-brands fa-weibo"></i></a>
+          <a href="#" aria-label="微信"><i class="fa-brands fa-weixin"></i></a>
+          <a href="#" aria-label="小红书"><i class="fa-solid fa-book"></i></a>
+          <a href="#" aria-label="抖音"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>产品中心</h4>
+        <ul>
+          <li><a href="#">面霜系列</a></li>
+          <li><a href="#">精华系列</a></li>
+          <li><a href="#">水乳系列</a></li>
+          <li><a href="#">防晒系列</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>客户服务</h4>
+        <ul>
+          <li><a href="#">购物指南</a></li>
+          <li><a href="#">配送说明</a></li>
+          <li><a href="#">退换政策</a></li>
+          <li><a href="#">常见问题</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于我们</h4>
+        <ul>
+          <li><a href="#">品牌故事</a></li>
+          <li><a href="#">成分科技</a></li>
+          <li><a href="#">新闻动态</a></li>
+          <li><a href="#">联系我们</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 珀莱雅 PROYA. 本页面为演示用推广页，所有信息均为虚构。</span>
+      <span>客服热线：400-888-0000 · ICP 备案号 0000000 号</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     JavaScript：导航/动画/规格/购买交互
+     ============================================================ -->
+<script>
+(function(){
+  'use strict';
+
+  /* ---------- 导航栏滚动变色 ---------- */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 60){ nav.classList.add('scrolled'); }
+    else{ nav.classList.remove('scrolled'); }
+  }, {passive:true});
+
+  /* ---------- 滚动淡入动画（IntersectionObserver） ---------- */
+  const io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('show');
+        // 效果区进度条动画
+        if(e.target.classList.contains('effect-stats')){
+          e.target.querySelectorAll('.fill').forEach(function(f){
+            f.style.width = f.getAttribute('data-w') + '%';
+          });
+        }
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.18});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  /* 效果区进度条：当 effect-stats 进入视口时触发（单独处理，因 fill 在子元素） */
+  const statsIO = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.querySelectorAll('.fill').forEach(function(f){
+          f.style.width = f.getAttribute('data-w') + '%';
+        });
+        statsIO.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.3});
+  const statsEl = document.querySelector('.effect-stats');
+  if(statsEl){ statsIO.observe(statsEl); }
+
+  /* ---------- 规格选择 ---------- */
+  const specs = document.querySelectorAll('.spec');
+  const priceNow = document.querySelector('.price-row .now');
+  specs.forEach(function(spec){
+    spec.addEventListener('click', function(){
+      specs.forEach(function(s){ s.classList.remove('active'); });
+      spec.classList.add('active');
+      const price = spec.getAttribute('data-price');
+      // 更新价格（保留 yen 符号）
+      priceNow.innerHTML = '<span class="yen">¥</span>' + price;
+    });
+  });
+
+  /* ---------- 购买按钮交互（演示用 toast） ---------- */
+  function toast(msg){
+    let t = document.createElement('div');
+    t.textContent = msg;
+    t.style.cssText = 'position:fixed;left:50%;top:30px;transform:translateX(-50%);background:#0a3d62;color:#fff;padding:14px 28px;border-radius:50px;font-size:14px;letter-spacing:1px;z-index:9999;box-shadow:0 10px 30px rgba(10,61,98,.3);opacity:0;transition:opacity .3s,transform .3s';
+    document.body.appendChild(t);
+    requestAnimationFrame(function(){
+      t.style.opacity = '1';
+      t.style.transform = 'translateX(-50%) translateY(8px)';
+    });
+    setTimeout(function(){
+      t.style.opacity = '0';
+      setTimeout(function(){ t.remove(); }, 300);
+    }, 2200);
+  }
+  const buyNow = document.getElementById('buyNow');
+  const addCart = document.getElementById('addCart');
+  if(buyNow){ buyNow.addEventListener('click', function(){ toast('已加入购买流程（演示页面）'); }); }
+  if(addCart){ addCart.addEventListener('click', function(){ toast('已加入购物车（演示页面）'); }); }
+
+  /* ---------- 移动端菜单（简单锚点展开） ---------- */
+  const burger = document.querySelector('.nav-burger');
+  if(burger){
+    burger.addEventListener('click', function(){
+      const links = document.querySelector('.nav .links');
+      if(links.style.display === 'flex'){
+        links.style.display = 'none';
+      } else {
+        links.style.display = 'flex';
+        links.style.position = 'absolute';
+        links.style.top = '100%';
+        links.style.left = '0';
+        links.style.right = '0';
+        links.style.flexDirection = 'column';
+        links.style.background = 'rgba(250,252,254,.96)';
+        links.style.padding = '20px 24px';
+        links.style.gap = '16px';
+        links.style.boxShadow = '0 10px 30px rgba(10,61,98,.1)';
+        links.querySelectorAll('a').forEach(function(a){ a.style.color = '#4a5d70'; });
+      }
+    });
+  }
+
+})();
+</script>
+
+</body>
+</html>
